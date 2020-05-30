@@ -49,6 +49,12 @@ namespace UnitTestApp.Controllers
         [HttpPost]
         public IActionResult AddUser(User user)
         {
+
+            if (!user.Age.HasValue || user?.Age <= 0)
+            {
+                ModelState.AddModelError("Age", "User age is null or (equals 0 or lower then 0)");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(user);
