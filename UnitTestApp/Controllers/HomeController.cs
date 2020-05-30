@@ -11,11 +11,12 @@ namespace UnitTestApp.Controllers
 {
     public class HomeController : Controller
     {
-       
-
         public IActionResult Index()
         {
-            return View();
+            ViewData["Message"] = "Hello";
+
+
+            return View("Index");
         }
     }
 }
