@@ -11,12 +11,20 @@ namespace UnitTestApp.Controllers
 {
     public class HomeController : Controller
     {
+        IRepository repo;
+
+        public HomeController(IRepository r)
+        {
+            repo = r;
+        }
+
         public IActionResult Index()
         {
             ViewData["Message"] = "Hello";
 
+            var users = repo.GetAll();
 
-            return View("Index");
+            return View(users);
         }
     }
 }
